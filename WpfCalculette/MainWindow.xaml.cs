@@ -27,10 +27,27 @@ namespace WpfCalculette
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            double dblnb1 = Convert.ToInt32(tbxNb1.Text);
-            double dblnb2 = Convert.ToInt32(tbxNb2.Text);
-            double dblResponse = dblnb1 + dblnb2;
-            lblResponse.Content = dblResponse.ToString();
+            double dblnb1;
+            double dblnb2;
+            double dblResponse;
+           
+             if(double.TryParse(tbxNb1.Text, out dblnb1))
+            {
+                if (double.TryParse(tbxNb2.Text, out dblnb2))
+                {
+                    dblResponse = dblnb1 + dblnb2;
+                    lblResponse.Content = dblResponse.ToString();
+
+                }
+                else
+                {
+                    MessageBox.Show("Erreur veuillez saisir un nombre entier");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Erreur veuillez saisir un nombre entier");
+            }
         }
     }
 }
